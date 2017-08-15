@@ -15,7 +15,7 @@ echo
 #[[ -z $1 ]] && read -p "Partition Name (sdXn) : " part || part=$1
 while true 
 do
-	read -p "Partition Name (sdXn) : " part || part=$1
+	read -p "Partition Name (sdXn) : " part
 	expr "$part" : '^[sh]d[a-z][0-9][0-9]*$' >/dev/null 2>&1 && break
 	[[ "$part" == "" ]] && echo "Abandon" && exit 10
 done
@@ -27,8 +27,9 @@ if [[ $? != 0 ]]; then
 	exit 3
 fi  
 uuid=`blkid |grep $part |awk '{print $2}' |sed 's/"//g'` 
-# UUID ou LABEL peut apparaitre dans le champs 3 de la commande blkid
-# par ex une clé usb peut donner d'autres infos dans le champs 2
+# UUID peut apparaitre dans le champs 3 de la commande blkid
+# par ex une partition "labelisée",  LABEL est dans le champs 2
+# ou une clé usb peut donner d'autres infos dans le champs 2
 echo $uuid |egrep -q "UUID|LABEL"
 if [[ $? != 0 ]] ; then
 	uuid=$(blkid | grep $part |awk '{print $3}' |sed 's/"//g')
