@@ -156,7 +156,8 @@ sda      8:0    0  59,6G  0 disk
 ├─sda1   8:1    0    26G  0 part /
 └─sda6   8:6    0   3,1G  0 part 
 
-Partition Name (sdXn) : fzr1000
+Partition Name (sdXn) : cbr900
+cbr900 not a partition ...
 Partition Name (sdXn) : hda3
 hda3 not found
 root@saturn:/home/blue/GIT/linux_admin-# ./appendfstab.sh
