@@ -18,6 +18,7 @@ do
 	read -p "Partition Name (sdXn) : " part
 	expr "$part" : '^[sh]d[a-z][0-9][0-9]*$' >/dev/null 2>&1 && break
 	[[ "$part" == "" ]] && echo "Abandon" && exit 10
+	echo "$part not a partition ..."
 done
 grep -q $part /etc/fstab
 [[ $? == 0 ]] && echo -e "$part is already in /etc/fstab\nAbandon" && exit 2
