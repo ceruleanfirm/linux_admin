@@ -235,7 +235,7 @@ UUID=a3d08a89-f9a0-4ea2-b01e-d3192ad76fe5 /backup	ext4	defaults	1 2
 UUID=87793090-366d-437f-b95c-c012a6206f71 /altcoin ext4 defaults 1 2
 
 File is correct (N/y) ? : y
-Overwrite /etc/fstab (N/y) ? : n
+Overwrite /etc/fstab (N/y) ? : 
 Abandon
 root@saturn:/home/blue/GIT/linux_admin-# ./appendfstab.sh
 
@@ -260,7 +260,7 @@ sda      8:0    0  59,6G  0 disk
 └─sda6   8:6    0   3,1G  0 part 
 
 Partition Name (sdXn) : sda5
-MountPoint : /altcoin
+MountPoint : /disk2
 
 #
 # /etc/fstab
@@ -283,7 +283,7 @@ UUID=4c13fdfd-453d-454f-96e6-dc3f739eba2f /data2	ext4	defaults	1 2
 # sdb6
 UUID=a3d08a89-f9a0-4ea2-b01e-d3192ad76fe5 /backup	ext4	defaults	1 2
 # sda5
-UUID=87793090-366d-437f-b95c-c012a6206f71 /altcoin ext4 defaults 1 2
+UUID=87793090-366d-437f-b95c-c012a6206f71 /disk2 ext4 defaults 1 2
 
 File is correct (N/y) ? : y
 Overwrite /etc/fstab (N/y) ? : y
