@@ -60,7 +60,7 @@ grep -q $dir /etc/fstab && {
 	Saferemove
 	exit 7
 }
-[[ -e $dir ]] || { mkdir $dir && echo "$dir created" && sleep 2 ; }
+[[ -e $dir ]] || { mkdir -p $dir && echo "$dir created" && sleep 2 ; }
 echo "# $part" >> fstab.new
 echo "$uuid $dir $FS defaults 1 2" >> fstab.new
 echo
