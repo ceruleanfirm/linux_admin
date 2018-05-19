@@ -50,7 +50,7 @@ grep -q $part /etc/mtab
 # si ce n'est pas le cas, on la monte pour assigner une valeur à la variable FS
 FS=$(grep $part /etc/mtab |awk '{print $3}')
 # On ne pourra pas modifier le fstab avec une partition ("labelisée" ou en LVM) déjà présente dans le fichier 
-[[ $FS == "" ]] && echo -e "\n# $part\n$uuid is already in /etc/fstab\nAbandon" && {
+[[ $FS == "" ]] && echo -e "\n# $part\n$uuid\nPartition with LABEL (CRYPTO_LUKS, LVM ...)\nAbandon" && {
 	Saferemove
 	exit 6
 }
