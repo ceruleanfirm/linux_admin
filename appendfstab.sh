@@ -67,16 +67,20 @@ echo
 cat fstab.new
 echo
 read -p "File is correct (N/y) ? : " rep
-[[ $rep == "y" || $rep == "Y" ]] && read -p "Overwrite /etc/fstab (N/y) ? : " rep2 || { 
-	Saferemove
-	exit 8 
-} 
-# /etc/fstab au lieu de fstab.test
-[[ $rep2 == "y" ||$rep2 == "Y" ]] && cp fstab.new /etc/fstab || { 
-	echo "Abandon"
-	Saferemove
-	exit 9  
-}
+case $rep in 
+	y*|Y*) read -p "Overwrite /etc/fstab (N/y) ? : " rep2
+	;;
+	* ) echo Abandon
+		exit
+esac
+
+case $rep2 in 
+	y*|Y*)  cp /etc/fstab.new /etc/fstab
+	;;
+	*) echo Abandon
+		exit
+esac
+
 Saferemove && rm -fr fstab.new
 
 exit 0
