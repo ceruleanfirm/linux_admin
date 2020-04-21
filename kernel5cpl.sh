@@ -4,7 +4,7 @@
 
 [[ $UID == 0 ]] || {
     echo 'run me as root'
-    exit 11
+    exit 10
 }
 ps -ef |grep -E 'kernel.*cpl.sh' |grep -vE "grep|$$" && {
 	echo -e "script may be already running...\nQuitting"
@@ -17,7 +17,7 @@ ls |grep linux-$rel.tar.gz || {
 	[[ $? != 0 ]] && {
 	echo "linux-$rel.tar.gz not found in https://cdn.kernel.org/pub/linux/kernel/v5.x/"
 	echo "Quitting"
-	exit 12
+	exit 11
 	}
 }
 rm -f sha256sums.asc
@@ -105,4 +105,3 @@ grub-mkconfig -o /boot/grub/grub.cfg || {
 	grub2-mkconfig -o /boot/grub2/grub.cfg
 	grubby --set-default /boot/vmlinuz-$rel
 }
-
